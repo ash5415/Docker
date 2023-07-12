@@ -333,16 +333,101 @@ overview of docker image and container images demo :
 
                                     9. docker ps -a   (check the containers)
 
-                                    10. 
+List the running containers:
+============================
+
+==> list the running containers 
+
+         command : docker container ls
+
+==> stop the running container
+
+       command :    docker stop <container name>
+
+==> restart the container
+
+         command: restart a running <container name>
+
+==> kill the running the container
+
+           command : docker kill <container name>
+
+==> Attach local standard input, output and error streams to a running container
+
+           command: docker attach <container name>
+
+==> block the container 
+
+        command : docker wait <container name>
+
+Docker shared command:
+=====================
+
+==> pull an image from the registry
+
+        command: docker pull<options> <name of the image>
+
+==> push an image from the registry
+
+      command: docker push <name of the image>
+
+==> run a command in a running container
+
+         command: docker exec -it <container id>
+                            
+==> login to the docker hub 
+
+            command: docker login 
+
+==> get information form the docker tool
+
+           command: docker info 
+
+==> display history of an image with the image name mentioned in the command
+
+           command: docker history <image name>
+
+==> create docker volume 
+
+          command: 
+                     ==> docker volume create <name of the volume>
+
+                     ==> docker volume ls
+
+Docker swarm commands:
+======================
+
+==> create docker swarm
+
+           command: docker swarm init
+
+==> join nodes in the swarm
+
+         command:
+
+==> execute this command to leave docker swarm
+
+         command:
  
+==> leave docker swarm command
 
-                                     
+         command: docker swarm leave -f
 
+==> to check the nodes in docker
 
+          command: docker node ls 
 
-              
+docker composed commands:
+=========================
 
+==> display docker composed version 
 
+           command: docker-compose -version
 
+==> create docker composed file
 
- 
+            command: vi docker-composed.yml
+
+==> run our docker composed file
+
+             command:docker-composed up -d
