@@ -1,0 +1,40 @@
+                        Docker install on ubuntu
+                    ===============================
+
+==> to install docker on ubuntu machine we need to delete docker first.
+
+        command: sudo apt-get remove docker docker-engine docker.io
+
+==> we need to update the software 
+
+        command: sudo apt-get update
+
+==> install docker 
+   
+     command : docker install
+
+     command : sudo apt install docker.io
+
+==> we need to install all dependence packages
+
+      command : udo snap install docker 
+
+==> check the docker version 
+
+       command : docker --version 
+
+==> pull the docker image
+
+        command : sudo docker run <image name> 
+
+==> we need to check the image weather it is present or not 
+
+          command : sudo docker images
+
+==> to display all containers 
+
+      command : sudo docker ps -a 
+
+==>Running containers  in docker 
+
+     command : sudo docker ps

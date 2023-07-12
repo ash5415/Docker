@@ -1,0 +1,348 @@
+                                        Docker
+                                    ==============
+==> docker check the version : docker version
+
+==> this pull th ubuntu image from docker hub repository with the tag : latest
+
+==>          docker pull ubuntu
+
+==> docker run -i <image name>  this command helps you to get inside the container folders 
+
+connect to terminal:
+====================
+
+==> docker run -t <image name> this command line options call a terminal from inside the container...
+
+
+    
+Docker commands:
+===============
+
+==> docker run command  : docker run <image name>
+
+            ex: docker run nginx
+
+List containers:
+================
+
+        ==> to see all the list of commands: docker ps
+
+All containers:
+===============
+
+==> to see all remaining containers: docker ps -a        (previous and stopped containers)
+
+Stopping containers:
+==================== 
+
+==> docker stop : docker stop <pass the container id or name of the container>
+
+==> docker stop running container : docker stop silly_sammet (showing the list of running containers)
+
+Removing containers:
+====================
+==> docker remove container : docker rmi <image name>
+
+List of images:
+===============
+
+==> to see the list of images : docker images
+
+==> Delete images   : docker rmi < image name > 
+
+        Note : to Removing image delete all dependent containers to remove image 
+
+PUll image:
+===========
+
+==> to pull image :  docker pull <image name>
+
+Docker attach and detach :
+==========================
+
+==> to run docker image  : docker run <image name>
+
+==> to detach docker image: docker run -d <image name>
+
+==> to attach the docker container : docker attach <image name or docker id>
+
+Docker run :
+============
+
+==> docker run images : docker run redis    (this will install the latest version)
+
+==> you want to change the version : docker run redis:4.0 
+
+Inspect container:
+==================
+
+==> To inspect container : docker inspect < container name  or id >
+
+Container logs:
+===============
+
+==> to check the container logs : docker logs < container name or id > 
+
+
+Docker environment variables:
+=============================
+
+==> if you want to change any color on your file 
+
+         ex: docker run -e App_COLOR=blue  and container name
+
+finding environment variables in docker container all ready running:  docker inspect <container name>
+
+
+Docker images:
+==============
+     example:
+
+                how to create my own image ?
+              
+                1. OS - ubuntu
+
+                2. Update apt repository
+
+                3. install dependencies using apt
+
+                4. install the python dependencies using pip    (if you are using python)
+
+                5. copy source code to / opt folder
+
+                6. run the web server "flask" command
+
+  Docker file:
+==============
+
+        FROM ubuntu
+
+        RUN apt-get Update
+
+        RUN apt-get install python
+
+        RUN pip install flask
+        
+        RUN pip install flask-mysql
+
+        COPY . /opt/source-code
+
+        ENTRYPOINT FLASK_APP=/opt/source-code/app.py flask run 
+
+Note : after all this build the image : docker build Dockerfile -t <image name> / tag name 
+
+       push to the docker repository  : docker push <image name> / tag name 
+
+       if you want to see all this packages how much memory is occupied : docker history <image name>
+
+Docker build output:
+====================
+
+==> docker build .
+
+Docker Net working:
+==================
+
+                             commands : 
+                                         
+                                          1. docker version
+
+                                          2. docker network ls
+
+                            creating containers:
+
+                                          3. docker run -dit --name alphine1 alphine ash
+
+                                          4. docker run -dit --name alphine2 alphine ash
+
+                                          5. docker ps 
+
+                                          6. docker network inspect Bridge
+
+                                          7.docker network ls
+
+                            ==> if you want to reach to any container ip address 
+
+                                    command : ping <copy the ip address>
+
+==> how to talk one container to another container :
+
+               1. docker attach <container name>
+            
+        ==> if you want to check the container ip address:
+          
+                command:  ip addr show
+
+        ==> talking second container 
+
+                   command: ping -c 5 <paste the ip address>
+
+==>  inspect docker network :  docker inspect <container name or id>
+
+   1. Bridge   2. None    3. host
+
+Bridge:
+=======
+       ==> Bridge is the private and internal network created by docker on the host all container attached this 
+
+           network by default.
+
+       ==> Bridge is the default network and container attach to 
+          
+            example: docker run ubuntu
+
+None:
+=====
+       ==> the none network does't attach any containers....
+
+       ==> docker run ubuntu -- network=none
+
+Host:
+=====
+       ==> it is the public network...
+
+       ==> docker run host ubuntu --network=host 
+
+export container:
+=================
+
+==> to export a container 
+
+           command: docker export <container id>
+
+
+Docker file creating:
+=====================
+
+                1. what is docker ?
+                
+                2. what is docker file ?
+
+                3. syntax of docker file?
+
+                4. how to build docker images using docker file?
+
+                5. DEmo create a docker file?
+
+==> docker is a software package that has all dependencies and required to run .....
+
+==> docker file = comments + command  + Arguments 
+
+==> docker image is a template of instructions which is used to create docker containers.....
+
+==> docker image is comprised of multiple layers by default, it starts with base image ...
+
+==> entry point allows you to specify a command along with parameters ......
+
+             example : echo "hello, $name"
+
+ ===========> How to docker build works ?
+
+            1. create docker file 
+
+                commands : 1. vi Dockerfile     (in this file we need to set of instructions ex: git , node)
+
+                           2. docker images    (there is no images create images)
+
+                           3. docker built -t <image name>   (after creating the docker image check the images)
+
+                           4. docker images  
+
+                           5. docker rm image <name of the image>   (if u want to remove any image)
+
+container commands:        (create container)
+===================
+
+==> for a container you need to require docker image...
+
+         commands :   
+                         1. docker create <image name>
+                           
+                         2. docker run <image name>      (docker run a container)
+
+                         3. docker rename <container name , new container name>  (if u want to change a container name)
+
+overview of docker image and container images demo :
+====================================================
+
+     ==> creating docker image 
+
+            command : 1. docker pull jenkins 
+              
+                      2. docker images 
+
+        ==> creating jenkins container 
+
+                 command : 1. docker create jenkins
+
+                           2. docker ps 
+
+                           3. docker ps -a 
+
+        ==> if u want ot start the container 
+
+                command : 
+                              1. docker start <container name>
+
+                              2. docker run <container name>
+
+        ==> remove all stopped containers
+
+                 command: 
+                                 1. docker container prune  (stop all containers)
+
+                                 2. docker rm <container name>  (remove an existing container)
+
+                Demo for stopped container:
+                ===========================
+
+                         1. create container 
+                             
+                                  command : 1. docker run -d <container name>
+                                            
+                                            2. docker ps     (check for the image) 
+
+                                            3. docker stop <container name> (if u want to stop the container)
+
+                                            4. docker ps -a   (check  the status of the container)
+
+                                            5. docker container prune    (stopping all the containers)
+
+                                            6. docker ps -a    (check  the status of the containers)
+
+                2. changing the container inside the information:
+                   ==============================================
+
+                             command :
+
+                                    1. docker run -d <container name>
+
+                                    2. docker ps
+
+                                    3. docker ps -a
+
+                                    4. docker container commit <container name> <given the new name here>   (if u want to change any info of the container)
+
+                                    5. docker image   (the new name change in the form of a container)
+
+                                    6. docker images
+
+                                    7. docker rm <container id>    (if u want to remove the container)
+
+                                    8. docker rm <container id> -f  (if u want to remove the container forcefully)
+
+                                    9. docker ps -a   (check the containers)
+
+                                    10. 
+ 
+
+                                     
+
+
+
+              
+
+
+
+
+ 
