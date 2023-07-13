@@ -387,7 +387,8 @@ Docker shared command:
 
            command: docker history <image name>
 
-==> create docker volume 
+ create docker volume:
+ =====================
 
           command: 
                      ==> docker volume create <name of the volume>

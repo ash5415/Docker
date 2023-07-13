@@ -38,3 +38,85 @@
 ==>Running containers  in docker 
 
      command : sudo docker ps
+
+==> check the docker location of the cli
+
+           command: which docker
+
+==> check the demon location of the docker
+
+          command: ps -ef | grep dockerd
+
+Demo :
+======
+
+==> to start our first container we need to deploy the web server first   
+
+            ex: nginx etc.....
+
+         command:
+
+                  1. docker run -d --name nginx nginx       (we r installing nginx web server)
+
+                  2. docker ps 
+
+                  3. docker inspect <name of ghe container or id>
+
+                  4. curl <ip add of the container>     (this will give you the nginx output)
+
+                  5. docker logs <container or id>       (to check the container logs)
+
+                  6. docker exec -it <container name or id > bash       (we are entering in to the container)
+
+                  7. ls -ltra           (this will give you the inside the root file system.....)
+
+                  8. exit           (if you want  to run out of the container)
+
+
+checking images in locally in the system:
+=========================================
+
+==> docker images  
+
+==> docker kill  <container name or id>
+
+==> docker ps
+
+==> docker ps -a
+
+==> docker system prune -a
+
+port mapping:
+=============
+
+==> docker run -d -p 8080:80  <name of th image>
+
+          Note: 8080 is the VM port number    and 80 is the in side the  container
+
+==> docker ps
+                            
+Creating volume:
+================
+
+==> to create volume 
+
+        command: 
+                    1. docker run -v /data:/var/lib/mysql --name mysqldb  -e MYSQL_ROOT_PASSWORD=root -d mysql
+
+                    2. docker ps
+
+                    3. cd/data    (go to the location)
+
+                    4. docker ps
+
+                    5. docker exec -it <name of the container>  bash     (go inside the container)
+
+                    6. cd/var/lib/mysql
+
+                    7. ls -ltra
+
+                    8. touch test         (if u want to create an file)
+
+                    9. exit              (it u want to exit)
+
+                    10. ls -ltra
